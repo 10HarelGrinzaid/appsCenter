@@ -12,9 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const showAppsDate = (filt) => {
+const showAppsData = () => {
 
-    const appsJASON = getData();
+    let filt = '';
+
+    filt = extractValueFromInput("form1");
+
+    console.log(filt);
+
+    //const appsJASON = getData();
 
     //console.log(appsJASON);
     const element = document.getElementById('appList');
@@ -27,9 +33,10 @@ const showAppsDate = (filt) => {
 
 
     var newAppsArray = getData().filter(function (app) {
-        return app['name'] == filt;
 
-        //TODO: find a way to use regexp in here
+        const regexp = new RegExp(filt, 'i');
+
+        return regexp.test(app['name']);
     });
 
 
@@ -75,24 +82,12 @@ const showAppsDate = (filt) => {
     );
 }
 
-const doesAppMachFilter = (filter, filterby) => {
-
-    const pattern = new RegExp(filter, 'i');
-    return pattern.test(app[filterby]);
-}
-
 function switchToAddApplication() {
     window.location.href = "addApplication.html"
 }
 
-const filteredApps = (filt, filterby) => getData().filter(app => {
-
-    const regexp = new RegExp(filt, 'i');
-
-    let appFiltBy = app[filterby]
-
-    if (regexp.test(appFiltBy)) {
-        return app;
-    }
-});
+const extractValueFromInput = (id) => {
+    const val = document.querySelector(`#${id}`).value;
+    return val;
+}
 

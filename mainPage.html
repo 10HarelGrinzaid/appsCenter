@@ -11,14 +11,14 @@
     crossorigin="anonymous"
   />
 </head>
-<body onload="showAppsDate()">
+<body onload="showAppsData('')">
   <nav>
     <header>
       <div class="input-group">
         <div class="form-outline">
           <input
-            onkeypress="showAppsDate()"
-            type="search"
+            onkeyup="showAppsData('i')"
+            type="text"
             id="form1"
             class="form-control"
           />
