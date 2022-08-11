@@ -14,30 +14,42 @@
 <body onload="showAppsData('')">
   <nav>
     <header>
-      <div class="input-group">
-        <div class="form-outline">
-          <input
-            onkeyup="showAppsData('i')"
-            type="text"
-            id="form1"
-            class="form-control"
-          />
-          <label class="form-label" for="form1">Search</label>
+      <div class="input-group row">
+        <div class="col justify-content-center">
+          <div class="row">
+            <div class="form-outline col-5">
+              <input
+                onkeyup="showAppsData('')"
+                type="text"
+                id="form1"
+                class="form-control"
+                placeholder="search....."
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary col-2"
+              onclick="showAppsData('')"
+            >
+              <i class="fas fa-search"></i>
+              <a>search</a>
+            </button>
+          </div>
         </div>
-        <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          onclick="switchToAddApplication()"
-          data-target="#navbarHeader"
-          aria-controls="navbarHeader"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="align-items-end">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="switchToAddApplication()"
+            data-target="#navbarHeader"
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+            <a>switch To Add Application</a>
+          </button>
+        </div>
       </div>
     </header>
   </nav>
