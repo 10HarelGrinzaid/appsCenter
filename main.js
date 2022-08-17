@@ -14,72 +14,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const showAppsData = () => {
 
-    let filt = '';
+    let nameFilter = '';
 
-    filt = extractValueFromInput("form1");
+    nameFilter = extractValueFromInput("form1");
 
-    console.log(filt);
+    console.log(nameFilter);
 
     //const appsJASON = getData();
 
     //console.log(appsJASON);
-    const element = document.getElementById('appList');
+    const appsList = document.getElementById('appList');
+    let apps = getData();
+    let filtered = apps.filter(item => item.name.includes(nameFilter));
 
-    var child = element.lastElementChild;
-    while (child) {
-        element.removeChild(child);
-        child = element.lastElementChild;
-    }
-
-
-    var newAppsArray = getData().filter(function (app) {
-
-        const regexp = new RegExp(filt, 'i');
-
-        return regexp.test(app['name']);
-    });
+    let html = filtered.map((app) => {
+        return "<div></div>"//************************************************************************
+    }).join('\n');
 
 
-
-    console.log(newAppsArray);
-
-    newAppsArray.forEach(app => {
-
-        const divAppInfo = document.createElement("div");
-
-        const appInfo = document.createElement("ul");
-        const appInfoName = document.createElement("li");
-        const appInfoPrice = document.createElement("li");
-
-        appInfoPrice.classList.add("list-group-item");
-        appInfoPrice.classList.add("list-group-item-action");
-        appInfoPrice.classList.add("list-group-item-primary");
-
-        appInfoName.classList.add("list-group-item");
-        appInfoName.classList.add("list-group-item-action");
-        appInfoName.classList.add("list-group-item-primary");
-
-        const nameNode = document.createTextNode(app['name']);
-        const priceNode = document.createTextNode(app['price']);
-
-        var documentFragment = document.createDocumentFragment();
+    // var child = element.lastElementChild;
+    // while (child) {
+    //     element.removeChild(child);
+    //     child = element.lastElementChild;
+    // }
 
 
-        appInfoPrice.appendChild(nameNode);
-        appInfoName.appendChild(priceNode);
+    // var newAppsArray = getData().filter(function (app) {
 
-        documentFragment.appendChild(appInfo);
+    //     const regexp = new RegExp(filt, 'i');
 
-        appInfo.appendChild(appInfoPrice);
-        appInfo.appendChild(appInfoName);
-
-        divAppInfo.appendChild(documentFragment);
+    //     return regexp.test(app['name']);
+    // });
 
 
 
-        element.appendChild(divAppInfo);
-    }
-    );
+    // console.log(newAppsArray);
+
+    // newAppsArray.forEach(app => {
+
+    //     const divAppInfo = document.createElement("div");
+
+    //     const appInfo = document.createElement("ul");
+    //     const appInfoName = document.createElement("li");
+    //     const appInfoPrice = document.createElement("li");
+
+    //     appInfoPrice.classList.add("list-group-item");
+    //     appInfoPrice.classList.add("list-group-item-action");
+    //     appInfoPrice.classList.add("list-group-item-primary");
+
+    //     appInfoName.classList.add("list-group-item");
+    //     appInfoName.classList.add("list-group-item-action");
+    //     appInfoName.classList.add("list-group-item-primary");
+
+    //     const nameNode = document.createTextNode(app['name']);
+    //     const priceNode = document.createTextNode(app['price']);
+
+    //     var documentFragment = document.createDocumentFragment();
+
+
+    //     appInfoPrice.appendChild(nameNode);
+    //     appInfoName.appendChild(priceNode);
+
+    //     documentFragment.appendChild(appInfo);
+
+    //     appInfo.appendChild(appInfoPrice);
+    //     appInfo.appendChild(appInfoName);
+
+    //     divAppInfo.appendChild(documentFragment);
+
+
+
+    //     element.appendChild(divAppInfo);
+    // }
+    // );
 }
 
 function switchToAddApplication() {
